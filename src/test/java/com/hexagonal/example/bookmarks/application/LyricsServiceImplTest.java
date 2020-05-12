@@ -1,7 +1,17 @@
-package com.hexagonal.example.bookmarks.lyrics.application;
+package com.hexagonal.example.bookmarks.application;
 
-import com.hexagonal.example.bookmarks.lyrics.domain.Lyrics;
-import com.hexagonal.example.bookmarks.lyrics.domain.LyricsPersistencePort;
+import com.hexagonal.example.bookmarks.application.lyrics.AddLyricsBookmarkUseCase;
+import com.hexagonal.example.bookmarks.application.lyrics.AddLyricsBookmarkUseCaseImpl;
+import com.hexagonal.example.bookmarks.application.lyrics.ModifyLyricsBookmarkUseCase;
+import com.hexagonal.example.bookmarks.application.lyrics.ModifyLyricsBookmarkUseCaseImpl;
+import com.hexagonal.example.bookmarks.application.lyrics.RemoveLyricsBookmarkUseCase;
+import com.hexagonal.example.bookmarks.application.lyrics.RemoveLyricsBookmarkUseCaseImpl;
+import com.hexagonal.example.bookmarks.application.lyrics.RetrieveAllLyricsUseCase;
+import com.hexagonal.example.bookmarks.application.lyrics.RetrieveAllLyricsUseCaseImpl;
+import com.hexagonal.example.bookmarks.application.lyrics.RetrieveSpecificLyricsUseCase;
+import com.hexagonal.example.bookmarks.application.lyrics.RetrieveSpecificLyricsUseCaseImpl;
+import com.hexagonal.example.bookmarks.domain.lyrics.model.Lyrics;
+import com.hexagonal.example.bookmarks.domain.lyrics.LyricsPersistencePort;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,7 +30,19 @@ import static org.mockito.Mockito.when;
 public class LyricsServiceImplTest {
 
     @InjectMocks
-    private LyricsServiceImpl lyricsServicePort;
+    private AddLyricsBookmarkUseCaseImpl addLyricsBookmarkUseCase;
+
+    @InjectMocks
+    private RemoveLyricsBookmarkUseCaseImpl removeLyricsBookmarkUseCase;
+
+    @InjectMocks
+    private ModifyLyricsBookmarkUseCaseImpl modifyLyricsBookmarkUseCase;
+
+    @InjectMocks
+    private RetrieveAllLyricsUseCaseImpl retrieveAllLyricsUseCase;
+
+    @InjectMocks
+    private RetrieveSpecificLyricsUseCaseImpl retrieveSpecificLyricsUseCase;
 
     @Mock
     private LyricsPersistencePort lyricsPersistencePort;
@@ -32,7 +54,7 @@ public class LyricsServiceImplTest {
     public void givenLyrics_whenAdd_thenAddPortCalled() {
         final Lyrics mockLyrics = mock(Lyrics.class);
 
-        lyricsServicePort.addLyrics(mockLyrics);
+        addLyricsBookmarkUseCase.addLyrics(mockLyrics);
 
         verify(lyricsPersistencePort, only()).addLyrics(mockLyrics);
     }
@@ -41,7 +63,7 @@ public class LyricsServiceImplTest {
     public void givenLyrics_whenRemove_thenRemovePortCalled() {
         final Lyrics mockLyrics = mock(Lyrics.class);
 
-        lyricsServicePort.removeLyrics(mockLyrics);
+        removeLyricsBookmarkUseCase.removeLyrics(mockLyrics);
 
         verify(lyricsPersistencePort, only()).removeLyrics(mockLyrics);
     }
@@ -51,7 +73,7 @@ public class LyricsServiceImplTest {
     public void givenLyrics_whenUpdate_thenUpdateLyricsPortCalled() {
         final Lyrics mockLyrics = mock(Lyrics.class);
 
-        lyricsServicePort.updateLyrics(mockLyrics);
+        modifyLyricsBookmarkUseCase.updateLyrics(mockLyrics);
 
         verify(lyricsPersistencePort, only()).updateLyrics(mockLyrics);
     }
@@ -60,7 +82,7 @@ public class LyricsServiceImplTest {
     public void givenCallToAllLyrics_whenNothingSpecified_thenGetAllLyricssPortCalled() {
         when(lyricsPersistencePort.getAllLyrics()).thenReturn(mockLyricsList);
 
-        final List<Lyrics> allLyricss = lyricsServicePort.getAllLyrics();
+        final List<Lyrics> allLyricss = retrieveAllLyricsUseCase.getAllLyrics();
 
         assertThat(allLyricss).isSameAs(mockLyricsList);
         verify(lyricsPersistencePort, only()).getAllLyrics();
@@ -72,7 +94,7 @@ public class LyricsServiceImplTest {
         final Lyrics mockLyrics = mock(Lyrics.class);
         when(lyricsPersistencePort.getLyricsById(testLyricsId)).thenReturn(mockLyrics);
 
-        final Lyrics lyrics = lyricsServicePort.getLyricsById(testLyricsId);
+        final Lyrics lyrics = retrieveSpecificLyricsUseCase.getLyricsById(testLyricsId);
 
         assertThat(lyrics).isSameAs(mockLyrics);
         verify(lyricsPersistencePort, only()).getLyricsById(testLyricsId);

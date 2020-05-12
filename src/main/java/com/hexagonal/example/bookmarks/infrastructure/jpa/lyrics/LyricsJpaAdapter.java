@@ -1,8 +1,8 @@
-package com.hexagonal.example.bookmarks.lyrics.infrastructure.jpa;
+package com.hexagonal.example.bookmarks.infrastructure.jpa.lyrics;
 
-import com.hexagonal.example.bookmarks.lyrics.domain.Lyrics;
-import com.hexagonal.example.bookmarks.lyrics.domain.LyricsNotFoundException;
-import com.hexagonal.example.bookmarks.lyrics.domain.LyricsPersistencePort;
+import com.hexagonal.example.bookmarks.domain.lyrics.model.Lyrics;
+import com.hexagonal.example.bookmarks.domain.lyrics.exception.LyricsNotFoundException;
+import com.hexagonal.example.bookmarks.domain.lyrics.LyricsPersistencePort;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 

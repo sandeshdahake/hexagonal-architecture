@@ -1,4 +1,4 @@
-package com.hexagonal.example.bookmarks.lyrics.infrastructure.jpa;
+package com.hexagonal.example.bookmarks.infrastructure.jpa.lyrics;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,5 +1,6 @@
-package com.hexagonal.example.bookmarks.lyrics.domain;
+package com.hexagonal.example.bookmarks.domain;
 
+import com.hexagonal.example.bookmarks.domain.lyrics.model.Lyrics;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

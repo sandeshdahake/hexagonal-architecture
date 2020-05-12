@@ -1,4 +1,4 @@
-package com.hexagonal.example.bookmarks.lyrics.domain;
+package com.hexagonal.example.bookmarks.domain.lyrics.exception;
 
 import java.text.MessageFormat;
 

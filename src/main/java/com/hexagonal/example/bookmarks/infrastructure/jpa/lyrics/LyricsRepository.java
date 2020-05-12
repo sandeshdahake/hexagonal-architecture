@@ -1,5 +1,6 @@
-package com.hexagonal.example.bookmarks.lyrics.infrastructure.jpa;
+package com.hexagonal.example.bookmarks.infrastructure.jpa.lyrics;
 
+import com.hexagonal.example.bookmarks.infrastructure.jpa.lyrics.LyricsEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LyricsRepository extends JpaRepository<LyricsEntity, Long> {

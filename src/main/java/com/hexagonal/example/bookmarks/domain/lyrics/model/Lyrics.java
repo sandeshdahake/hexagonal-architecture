@@ -1,4 +1,4 @@
-package com.hexagonal.example.bookmarks.lyrics.domain;
+package com.hexagonal.example.bookmarks.domain.lyrics.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

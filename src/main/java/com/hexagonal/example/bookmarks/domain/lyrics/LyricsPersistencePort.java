@@ -1,10 +1,11 @@
-package com.hexagonal.example.bookmarks.lyrics.application;
+package com.hexagonal.example.bookmarks.domain.lyrics;
 
-import com.hexagonal.example.bookmarks.lyrics.domain.Lyrics;
+import com.hexagonal.example.bookmarks.domain.lyrics.model.Lyrics;
 
 import java.util.List;
 
-public interface LyricsServicePort {
+public interface LyricsPersistencePort {
+
     void addLyrics(Lyrics lyrics);
 
     void removeLyrics(Lyrics lyrics);
@@ -15,3 +16,4 @@ public interface LyricsServicePort {
 
     Lyrics getLyricsById(Long lyricsId);
 }
+

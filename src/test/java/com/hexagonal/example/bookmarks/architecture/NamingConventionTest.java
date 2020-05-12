@@ -14,11 +14,13 @@ public class NamingConventionTest {
                     .that().resideInAPackage("..restAPI..")
                     .should().haveSimpleNameNotContaining("Gui");
 
+/*
     @ArchTest
     static ArchRule controllers_should_be_suffixed =
             classes()
                     .that().resideInAPackage("..restAPI..")
                     .should().haveSimpleNameEndingWith("Resource");
+*/
 
     @ArchTest
     static ArchRule classes_named_controller_should_never_be_in_a_restAPI_package =
